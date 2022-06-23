@@ -19,14 +19,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
     marginBottom: 20,
+    paddingLeft:5,
     justifyContent: 'space-between',
     alignContent: 'flex-end',
+    paddingRight:5
   },
   items:{
     color: 'gray',
     fontSize: 17,
     paddingTop: 10,
     paddingBottom: 10,
+    paddingLeft:5,
+   
   },
   itemList:{color: 'white', fontSize: 17, fontWeight: 'bold'}
 });

@@ -11,8 +11,9 @@ const styles = StyleSheet.create({
     },
     stockStyle:{
         flexDirection: 'row-reverse',
-        height:20,
-        marginTop:5
+        height:25,
+        marginBottom:5,
+        marginRight:5
     },
     priceStyle:{flexDirection:'row'
     },
@@ -30,14 +31,20 @@ const styles = StyleSheet.create({
         color:'white',
         paddingLeft:10,
         paddingRight:10,
-        margin:2
+        margin:2,
+        // marginRight:5,
+        marginTop:0
+       
+        // margingRight:5,
     },
     newStyles:{
         backgroundColor:'#62BD69',
         paddingLeft:10,
         paddingRight:10,
         margin:2,
-        marginRight:5
+        // marginRight:5,
+        marginTop:0
+
     },
     stockDesc:{
         paddingRight:10
@@ -52,6 +59,17 @@ const styles = StyleSheet.create({
           height: 1,
           width: "100%",
           backgroundColor: "grey",
+        }}
+      />
+    );
+  }
+  export const ListItemSeparatorColumn = () => {
+    return (
+      <View
+        style={{
+          width:1,
+          backgroundColor: "grey",
+          height: "100%",
         }}
       />
     );
@@ -107,16 +125,21 @@ const images=[require( '../../assets/images/shoe1.png'),require( '../../assets/i
  const Shoe = (props) => {
     const oldPrice = props.props.oldPrice;
   return (
-    <View style={styles.shoeView}>
+    <View style={{flexDirection:'row'}}>
+    <View style={[styles.shoeView,{marginRight:-5,marginLeft:5}]}>
         <View style ={styles.stockStyle}>
             {props.props.new ?<Text style={[styles.newStyles]}>{newConst}</Text>:<></>}
             {props.props.sale?<Text style={styles.sale}>{sale}</Text>:<></>}
         {props.props.availableStock !== '' && props.props.totalStock !== '' ?<Text style={[styles.stockDesc,styles.textColor]}>{props.props.availableStock} of {props.props.totalStock} {props.props.stockDesc}</Text>:<Text></Text>}
     </View>
     <Image source={images[props.index]} style={styles.image}></Image>
-    <Text style={[styles.textColor,{fontSize:20}]}>NIKE DUNK LOW SCRAP LONG WRA</Text>
+    <Text style={[styles.textColor,{fontSize:20,paddingRight:20}]}>{props.props.desc}</Text>
     <View style={styles.priceStyle}><Text style={oldPrice === '' ?styles.textColor : {color:'green'}}>${props.props.currentPrice}</Text>{oldPrice !== ''? <Text style={[styles.textColor,{textDecorationLine: 'line-through'}]}> + ${props.props.oldPrice}</Text>:<></>}</View>
     
     </View>
+    <ListItemSeparatorColumn></ListItemSeparatorColumn>
+    </View>
+       
+
   );
 }

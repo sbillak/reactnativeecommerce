@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import {
   View,
   Text,
@@ -36,21 +36,25 @@ const styles = StyleSheet.create({
   search: {
     marginLeft: 0,
     marginRight: 5,
-    height: 30,
-    width: 30,
+    marginTop:5,
+    height: 20,
+    width: 20,
   },
   textInput: {
     backgroundColor: 'black',
     padding: 10,
+    color:'white',
     borderRadius: 5,
     margin: 0,
+    color:'gray',
+    margin:5
   },
   cart: {marginLeft: 25, marginRight: 5, height: 30, width: 30},
   cartText: {
     color: 'white',
     paddingLeft: 8,
     paddingTop: 8,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   menuHeader: {
     marginLeft: 25,
@@ -61,27 +65,30 @@ const styles = StyleSheet.create({
   menu: {height: 20, width: 20},
   requestTextView: {
     color: 'white',
-    padding: 10,
+    // padding: 10,
     textAlign: 'center',
     paddingRight: 20,
-    fontWeight: 'bold',
+    paddingLeft:10,
+    // fontWeight: 'bold',
   },
   pagination: {
     color: 'white',
     fontSize: 26,
     padding: 20,
+    paddingLeft: 5,
     fontWeight: 'bold',
   },
   textStyle: {
     color: 'grey',
     fontSize: 20,
     paddingRight: 10,
+    paddingLeft: 5,
   },
   title: {
     fontSize: 25,
     color: 'white',
     padding: 20,
-    paddingLeft: 2,
+    paddingLeft: 5,
     fontWeight: 'bold',
   },
   tabs: {
@@ -107,9 +114,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     borderColor: 'white',
-    alignItems: 'center',
     marginTop: 20,
-    marginBottom: 20,
+    paddingLeft:5,
+    marginLeft:5,
+    marginBottom: 30,
+    marginRight:-40,
+    // alignItems:'flex-end',
+    // alinContent:'flex-end',
     width: Dimensions.get('window').width / 2 + 20,
   },
   imageArrow: {
@@ -123,13 +134,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'center',
-    width: Dimensions.get('window').width,
+    width: Dimensions.get('window').width-10,
     textAlign: 'center',
     marginRight: 40,
-    marginBottom: 20,
+    marginBottom: 40,
+    marginTop: 20,
     borderRadius: 20,
     borderWidth: 1,
     borderColor: 'white',
+    marginLeft:5,
   },
   center: {
     justifyContent: 'center',
@@ -154,6 +167,8 @@ const styles = StyleSheet.create({
   },
 });
 export const Dunks = ({navigation}) => {
+  const [value, setValue] = useState('Your email here...');
+  const [cursorPosition,setCursorPosition]=useState(0);
   const HeaderRightView = () => {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -163,7 +178,7 @@ export const Dunks = ({navigation}) => {
         <ImageBackground
           source={require('../../assets/images/cart.png')}
           style={styles.cart}>
-          <Text style={styles.cartText}>2</Text>
+          <Text style={styles.cartText}>02</Text>
         </ImageBackground>
         <Image
           source={require('../../assets/images/menu.jpg')}
@@ -214,34 +229,41 @@ export const Dunks = ({navigation}) => {
             <Image
               source={require('../../assets/images/garden.png')}
               style={{height: 70}}></Image>
-
-            <Text style={styles.textStyle}>
+            <Text style={[styles.textStyle,{padding:5}]}>
               Home {'>'} Nike {'>'} Dunks
             </Text>
-            <View style={{flexDirection: 'row-reverse'}}>
-              <Image
-                source={require('../../assets/images/arrow4.png')}
-                style={{height: 30, width: 70}}></Image>
-            </View>
             <ListItemSeparator />
             <Text style={styles.title}>DUNKS</Text>
             <ListItemSeparator />
             <View style={styles.tabs}>
-              <Text style={[styles.textStyle, styles.filterTextStyle]}>
-                Filters
-              </Text>
-              <View style={[styles.filterText, {flexDirection: 'row'}]}>
-                <Text style={[styles.textStyle, {}]}>Open</Text>
-                <Image
-                  source={require('../../assets/images/menu.jpg')}
-                  style={styles.menu}></Image>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flex: 1,
+                }}>
+                <Text style={[styles.textStyle, styles.filterTextStyle]}>
+                  Filters
+                </Text>
+              </View>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flex: 1,
+                }}>
+                <View style={[styles.filterText, {flexDirection: 'row'}]}>
+                  <Text style={[styles.textStyle, {}]}>Open</Text>
+                  <Image
+                    source={require('../../assets/images/menu.jpg')}
+                    style={styles.menu}></Image>
+                </View>
               </View>
             </View>
             <ListItemSeparator />
             <ShoeList></ShoeList>
             <ListItemSeparator />
             <Text style={styles.pagination}>
-              {' '}
               1{' '}
               <Text style={{color: 'gray'}}>
                 {' '}
@@ -256,20 +278,32 @@ export const Dunks = ({navigation}) => {
             <Image
               source={require('../../assets/images/nike.png')}
               style={{height: 120}}></Image>
-            <View style={{backgroundColor: '#404040', marginBottom: 100}}>
-              <View style={styles.requestText}>
-                <Text style={styles.requestTextView}>REQUEST COCIERGE</Text>
-                <Image
-                  source={require('../../assets/images/arrow3.png')}
-                  style={{height: 20, width: 30}}></Image>
+            <Text style={{color:'white',fontWeight:'bold',fontSize:35,paddingLeft:5}}>Not Seeing {"\n"}What You're {"\n"}Looking For?</Text>
+            <Text style={{color:'white',paddingLeft:5,fontSize:20,paddingTop:10,paddingBottom:20}}>Our conceirge service will track it {"\n"}down for you.</Text>
+            <View style={styles.requestText}>
+              <Text style={styles.requestTextView}>REQUEST COCIERGE</Text>
+              <View style={{flexDirection: 'row-reverse',margingTop:20,paddingTop:5}}>
+              <Image
+                source={require('../../assets/images/arrow3.png')}
+                style={{height: 10, width: 30,marginLeft:20}}></Image>
               </View>
+             
+            </View>
+            <ListItemSeparator></ListItemSeparator>
+            <View style={{backgroundColor: '#100c08', marginBottom: 100}}>
               <Text style={[styles.title, styles.signUp]}>
                 Sign up For The Newsletter.
               </Text>
               <TextInput
+                onFocus={()=>setValue('')}
+                autoFocus={false}
                 placeholderTextColor={'red'}
-                placeHolder={'Your email here'}
+                // placeHolder={value}
                 style={styles.textInput}
+                value={value}
+                onChangeText={text=>setValue(text)}
+                defaultValue={value}
+                selection={{start:(value === 'Your email here...' || '')?0:value.length}}
               />
               <View style={styles.row}>
                 <Text
@@ -285,7 +319,7 @@ export const Dunks = ({navigation}) => {
                     height: 20,
                     width: 30,
                     alignItems: 'flex-end',
-                    marginTop: 10,
+                    marginTop: -12,
                     marginRight: 10,
                     marginBottom: 10,
                   }}></Image>

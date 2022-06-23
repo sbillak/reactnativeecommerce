@@ -28,7 +28,7 @@ export const Navigation = () => {
         <AppStack.Navigator  screenOptions={{
     headerBackTitleVisible: false
   }}>
-        <AppStack.Screen name="Dunks" component={Dunks} options={{headerLeft:()=><Text style={{borderWidth:1,borderColor:'white',fontSize:20,color:'white' ,paddingRight:5,paddingLeft:5}}>BLITZ</Text>,headerStyle:{backgroundColor: 'black'}}}/>
+        <AppStack.Screen name="Dunks" component={Dunks} options={{headerLeft:()=><Text style={{borderWidth:1,borderColor:'white',fontSize:20,color:'white' ,paddingRight:5,paddingLeft:5,marginLeft:5}}>BLITZ</Text>,headerStyle:{backgroundColor: 'black'}}}/>
         <AppStack.Screen name="Nike" component={Nike} />
         <AppStack.Screen name="Jordans" component={Jordans} />
         <AppStack.Screen name="Adidas" component={Adidas} />
